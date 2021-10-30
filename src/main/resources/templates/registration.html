@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" />
+
+    <title>Registration</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Job board HTML-5 Template </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/price_rangs.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <!-- Header Start -->
+        <div class="header-area header-transparrent">
+            <div class="headder-top header-sticky">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-2">
+                            <!-- Logo -->
+                            <div class="logo">
+                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <div class="menu-wrapper">
+                                <!-- Main-menu -->
+                                <div class="main-menu">
+                                    <nav class="d-none d-lg-block">
+                                        <ul id="navigation">
+                                            <li><a href="index.html">Home</a></li>
+
+                                            <li><a href="contact.html">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- Header-btn -->
+                                <div class="header-btn d-none f-right d-lg-block">
+                                    <!--<a href="registration" class="btn head-btn1">Register</a>-->
+                                    <a th:href="@{/registration}" class="btn head-btn1">Register</a>
+                                    <!--  <a href="login.html" class="btn head-btn2">Login</a>-->
+                                    <a th:href="@{/login}" class="btn head-btn1">Login</a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">You've successfully registered.
+                        NOW PLEASE LOGIN!</div>
+                </div>
+
+                <h1>Registration</h1>
+                <form th:action="@{/registration}" th:object="${user}" method="post">
+
+                    <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
+      th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation
+      error</p>
+
+     <div class="form-group"
+      th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
+      <label for="firstName" class="control-label">First name</label> <input
+       id="firstName" class="form-control" th:field="*{firstName}" />
+      <p class="error-message"
+       th:each="error: ${#fields.errors('firstName')}"
+       th:text="${error}">Validation error</p>
+     </div>
+     <div class="form-group"
+      th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
+      <label for="lastName" class="control-label">Last name</label> <input
+       id="lastName" class="form-control" th:field="*{lastName}" />
+      <p class="error-message"
+       th:each="error : ${#fields.errors('lastName')}"
+       th:text="${error}">Validation error</p>
+     </div>
+     <div class="form-group"
+      th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+      <label for="email" class="control-label">E-mail</label> <input
+       id="email" class="form-control" th:field="*{email}" />
+      <p class="error-message"
+       th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation
+       error</p>
+     </div>
+     <div class="form-group"
+      th:classappend="${#fields.hasErrors('confirmEmail')}? 'has-error':''">
+      <label for="confirmEmail" class="control-label">Confirm
+       e-mail</label> <input id="confirmEmail" class="form-control"
+       th:field="*{confirmEmail}" />
+      <p class="error-message"
+       th:each="error : ${#fields.errors('confirmEmail')}"
+       th:text="${error}">Validation error</p>
+     </div>
+     <div class="form-group"
+      th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+      <label for="password" class="control-label">Password</label> <input
+       id="password" class="form-control" type="password"
+       th:field="*{password}" />
+      <p class="error-message"
+       th:each="error : ${#fields.errors('password')}"
+       th:text="${error}">Validation error</p>
+     </div>
+     <div class="form-group"
+      th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
+      <label for="confirmPassword" class="control-label">Confirm
+       password</label>
+         <input id="confirmPassword" class="form-control"
+       type="password" th:field="*{confirmPassword}" />
+      <p class="error-message"
+       th:each="error : ${#fields.errors('confirmPassword')}"
+       th:text="${error}">Validation error</p>
+     </div>
+                    <div class="form-group">
+                    <label for="Role">Role</label>
+                    <select class="form-control" id="role" title="Select Role" th:value="${role}" th:field="*{role}">
+                        <option value="USER">USER</option>
+                        <option value="RECRUITER">RECRUITER</option>
+                    </select>
+                   <br>
+            </div>
+
+            <!-- <div class="form-group"
+              th:classappend="${#fields.hasErrors('roles')}? 'has-error':''">
+              <label>
+              roles:</label>
+              <label class="checkbox-inline" th:each="role:${rolesList}" >
+                <input name="roles"
+               type="checkbox" th:text="${role.name}" th:value="${role.id}" th:field="*{roles}"/>
+              </label>
+              <p class="error-message"
+               th:each="error : ${#fields.errors('roles')}"
+               th:text="${error}">Validation error</p>
+             </div> -->
+
+     <div class="form-group">
+      <button type="submit" class="btn btn-success">Register</button>
+      <span>Already registered? <a href="/" th:href="@{/login}">Login
+        here</a></span>
+     </div>
+
+    </form>
+   </div>
+  </div>
+ </div>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area footer-bg footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <div class="footer-tittle">
+                                    <h4>About Us</h4>
+                                    <div class="footer-pera">
+                                        <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so behold.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Contact Info</h4>
+                                <ul>
+                                    <li>
+                                        <p>Address :Your address goes
+                                            here, your demo address.</p>
+                                    </li>
+                                    <li><a href="#">Phone : +8880 44338899</a></li>
+                                    <li><a href="#">Email : info@colorlib.com</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Important Link</h4>
+                                <ul>
+                                    <li><a href="#"> View Project</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">Testimonial</a></li>
+                                    <li><a href="#">Proparties</a></li>
+                                    <li><a href="#">Support</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Newsletter</h4>
+                                <div class="footer-pera footer-pera2">
+                                    <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
+                                </div>
+                                <!-- Form -->
+                                <div class="footer-form" >
+                                    <div id="mc_embed_signup">
+                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                              method="get" class="subscribe_form relative mail_part">
+                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
+                                                   class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
+                                                   onblur="this.placeholder = ' Email Address '">
+                                            <div class="form-icon">
+                                                <button type="submit" name="submit" id="newsletter-submit"
+                                                        class="email_icon newsletter-submit button-contactForm"><img src="assets/img/icon/form.png" alt=""></button>
+                                            </div>
+                                            <div class="mt-10 info"></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+
+
+        <!-- footer-bottom area -->
+        <div class="footer-bottom-area footer-bg">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-xl-10 col-lg-10 ">
+                            <div class="footer-copy-right">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+ <script type="text/javascript"
+  th:src="@{/webjars/jquery/3.5.1/jquery.min.js/}"></script>
+ <script type="text/javascript"
+  th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+</body>
+</html>
