@@ -3,16 +3,15 @@ package com.jobportal.dto;
 import javax.validation.constraints.AssertTrue;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-
-import com.jobportal.constraint.FieldMatch;
+import com.jobportal.constraint.*;
 
 @FieldMatch.List({
-    @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
-    @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")
+        @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
+        @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")
 })
 
 public class UserRegistrationDto {
-    
+
     @NotEmpty
     private String firstName;
     @NotEmpty
@@ -29,6 +28,8 @@ public class UserRegistrationDto {
     private String confirmEmail;
     @AssertTrue
     private Boolean terms;
+    //user profile elements
+
     @NotEmpty
     private String role = "USER";
 

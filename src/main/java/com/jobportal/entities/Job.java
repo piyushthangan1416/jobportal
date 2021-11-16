@@ -3,6 +3,7 @@ package com.jobportal.entities;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import java.time.Instant;
 
 @Entity
 @Table(name = "JOB")
@@ -38,6 +39,35 @@ public class Job {
     private String education;
 
     private String linkedIn;
+
+    private String userId;
+    private Instant postedDate;
+
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public Instant getPostedDate() {
+        return postedDate;
+    }
+
+    public void setPostedDate(Instant postedDate) {
+        this.postedDate = postedDate;
+    }
 
     public String getId() {
         return id;

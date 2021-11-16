@@ -96,7 +96,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h2 th:text="${job.jobTitles}">UI/UX Designer</h2>
+                            <h2>UI/UX Designer</h2>
                         </div>
                     </div>
                 </div>
@@ -118,12 +118,12 @@
                                 </div>
                                 <div class="job-tittle">
                                     <a href="#">
-                                        <h4 th:text="${job.companyName}">Digital Marketer</h4>
+                                        <h4 th:text="${review.companyName}">Digital Marketer</h4>
                                     </a>
                                     <ul>
                                         <li>Creative Agency</li>
-                                        <li th:text="${job.location}"><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li th:text="${job.salary}">$3500 - $4000</li>
+                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                                        <li>$3500 - $4000</li>
                                     </ul>
                                 </div>
                             </div>
@@ -134,25 +134,32 @@
                             <div class="post-details1 mb-50">
                                 <!-- Small Section Tittle -->
                                 <div class="small-section-tittle">
-                                    <h4>Job Description</h4>
+                                    <h4>Company Review</h4>
                                 </div>
-                                <p th:text="${job.jobDescription}">It is a long established fact that a reader will beff distracted by vbthe creadable content of a page when looking at its layout. The pointf of using Lorem Ipsum is that it has ahf mcore or-lgess normal distribution of letters, as opposed to using, Content here content here making it look like readable.</p>
+                                <p th:text="${review.companyReview}">It is a long established fact that a reader will beff distracted by vbthe creadable content of a page when looking at its layout. The pointf of using Lorem Ipsum is that it has ahf mcore or-lgess normal distribution of letters, as opposed to using, Content here content here making it look like readable.</p>
                             </div>
                             <div class="post-details2  mb-50">
                                  <!-- Small Section Tittle -->
                                 <div class="small-section-tittle">
-                                    <h4>Required Knowledge, Skills, and Abilities</h4>
+                                    <h4>Job Description & Review</h4>
                                 </div>
-                               <p th:text="${job.skills}"></p>
+                              <p th:text="${review.jobReview}"></p>
                             </div>
                             <div class="post-details2  mb-50">
                                  <!-- Small Section Tittle -->
                                 <div class="small-section-tittle">
-                                    <h4>Education + Experience</h4>
+                                    <h4>Salary Description</h4>
                                 </div>
-                               <p th:text="${job.education}"></p>
+                              <p th:text="${review.salaryDescription}"></p>
                             </div>
                         </div>
+						 <div class="post-details2  mb-50">
+                                 <!-- Small Section Tittle -->
+                                <div class="small-section-tittle">
+                                    <h4>Interview Experience</h4>
+                                </div>
+                               <p th:text="${review.interview}"></p>
+                            </div>
 
                     </div>
                     <!-- Right Content -->
@@ -163,35 +170,16 @@
                                <h4>Job Overview</h4>
                            </div>
                           <ul>
-                              <li>Posted date : <span th:text="${job.lastdate}">12 Aug 2019</span> </li>
-                              <li >Location : <span th:text="${job.location}">New York</span></li>
-
-                              <li >Job nature : <span th:text="${job.jobType}">Full time</span></li>
-                              <li >Salary :  <span th:text="${job.salary}">$7,800 yearly</span></li>
-
+                              <li >Posted date : <span>12 Aug 2019</span></li>
+                              <li >Location : <span th:text="${review.location}">New York</span></li>
+                              <li >Company Name : <span th:text="${review.companyName}">02</span></li>
+                              <li >Designation : <span th:text="${review.designation}">Full time</span></li>
+                              <li >Experience :  <span th:text="${review.experience}">$7,800 yearly</span></li>
+                             
                           </ul>
-                         <div class="apply-btn2">
-                             <form th:action="@{'/job/apply/' + ${job.id}}" th:object="${job}" method="post">
-                                 <div class="apply-btn2">
-                                     <!--  <a href="#" class="btn btn-block btn-primary btn-md">Save Job</a>-->
-                                     <button type="submit" class="btn btn-success">Apply Now</button>
-                                 </div>
-                             </form>
-                         </div>
+                        
                        </div>
-                        <div class="post-details4  mb-50">
-                            <!-- Small Section Tittle -->
-                           <div class="small-section-tittle">
-                               <h4>Company Information</h4>
-                           </div>
-                              <span>Colorlib</span>
-                              <p th:text="${job.companyDescription}">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            <ul>
-                                <li >Name: <span th:text="${job.companyName}">Colorlib </span></li>
-                                <li >Web : <span th:text="${job.website}"> colorlib.com</span></li>
-                                <li >Email: <span th:text="${job.email}">carrier.colorlib@gmail.com</span></li>
-                            </ul>
-                       </div>
+                        
                     </div>
                 </div>
             </div>
@@ -333,7 +321,7 @@
 
 	<!-- JS here -->
 	
-		<!-- All JS Cus tom Plugins Link Here here -->
+		<!-- All JS Custom Plugins Link Here here -->
         <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 		<!-- Jquery, Popper, Bootstrap -->
 		<script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
